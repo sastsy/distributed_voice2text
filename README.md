@@ -1,7 +1,64 @@
-# Distributed voice2text tool
-An application that allows you to speed up your audio interviews processing. First, split the audio into parts with audio_splitter.py,
-second, voice2text and spell corrector models process the audios into text in interview_voice2text.py, and, lastly, find answers to your questions in audio interviews in interview_qa.py.
+# Distributed Voice to Text Application
 
-### Distributed part
-Using Dask this code distributively processes the file, as it is split into chuncks. I launched the code remotely on cloud platform using SSH. The setup was: 1 master node and 2 worker nodes.
-Distribution accelerated the computing by 40%.
+This application utilizes distributed computing to perform voice-to-text transcription, question-answering, and text processing tasks efficiently.
+
+## Introduction
+
+This application consists of three main Python scripts:
+
+1. **audio_splitter.py**: Splits an input audio file into smaller segments.
+2. **interview_voice2text.py**: Transcribes audio files into text using automatic speech recognition (ASR) and performs spell correction.
+3. **interview_qa.py**: Performs question-answering tasks on text data.
+
+## Setup
+
+Ensure the following dependencies are installed:
+
+- Python 3.x
+- pydub
+- dask
+- transformers
+- dask.distributed
+
+## Usage
+
+1. **audio_splitter.py**:
+    - Split an audio file into smaller segments.
+    - Specify the input audio file path, output folder path, and duration of each segment in seconds.
+
+    ```bash
+    python audio_splitter.py
+    ```
+
+2.  **interview_voice2text.py**:
+    - Transcribe audio files into text and perform spell correction.
+    - Requires input audio files in the specified folder.
+
+    ```bash
+    python interview_voice2text.py
+    ```
+
+3. **interview_qa.py**:
+    - Perform question-answering tasks on text data.
+    - Requires pre-split text files in the output folder.
+
+    ```bash
+    python interview_qa.py
+    ```
+
+
+## Dependencies
+
+- **pydub**: Audio processing library.
+- **dask**: Parallel computing library.
+- **transformers**: Library for natural language processing tasks.
+- **dask.distributed**: Distributed computing framework.
+
+## Configuration
+
+- Ensure that the Dask client is configured with the correct address and port for distributed computing.
+- Modify the paths and parameters in the scripts as per your requirements.
+
+## Acknowledgments
+
+- This application utilizes various open-source libraries and models for audio processing and natural language understanding.
